@@ -10,8 +10,14 @@ class Core:
     def call(self):
         setup_instance = Setup()
         search_instance = Search()
-        response = Request(search_instance, setup_instance).get_response()
-        Presenter(response)
+
+        movie_url = search_instance.for_movie()
+        movies_response = Request(movie_url, setup_instance).get_response()
+
+        tv_series_url = search_instance.for_tv_series()
+        tv_series_response = Request(tv_series_url, setup_instance).get_response()
+
+        Presenter(movies_response, tv_series_response)
 
 core_instance = Core()
 core_instance.call()
