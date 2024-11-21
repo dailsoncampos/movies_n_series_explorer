@@ -1,8 +1,9 @@
 class Search:
     def __init__(self):
-        search_for = input("Pesquisar por: ")
-        self.url = self.generate_url(search_for)
+        self.title = input("Pesquisar por: ")
+    
+    def for_movie(self):
+        return f"https://api.themoviedb.org/3/search/movie?query={self.title}"
 
-    def generate_url(self, title):
-        url = "https://api.themoviedb.org/3/search/movie?query=" + title
-        return url
+    def for_tv_series(self):
+        return f"https://api.themoviedb.org/3/search/tv?query={self.title}"
